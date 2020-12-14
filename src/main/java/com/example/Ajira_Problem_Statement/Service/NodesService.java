@@ -74,7 +74,7 @@ public class NodesService {
         if(source.equals(destination))
             return;
         visited.add(source);
-        String type="";
+        DeviceType type=null;
         List<String> nodeConnection=new ArrayList<>();
         for(Nodes node:nodesList)
          {
@@ -110,7 +110,7 @@ public class NodesService {
             return result;
         nodeName=nodeParameter[2];
         nodeType=nodeParameter[1];
-        if(((!nodeType.equals("COMPUTER"))&&(!nodeType.equals("REPEATER"))))
+        if(((!nodeType.equals(DeviceType.COMPUTER.getName()))&&(!nodeType.equals(DeviceType.REPEATER.getName()))))
             return result;
         for(Nodes nodes:nodesList)
         {
@@ -120,11 +120,11 @@ public class NodesService {
                 return result;
             }
         }
-        if(nodeType.equals(DeviceType.COMPUTER.name())) {
-            node = new Nodes(nodeName, DeviceType.COMPUTER.name(), 5, new ArrayList<>());
+        if(nodeType.equals(DeviceType.COMPUTER.getName())) {
+            node = new Nodes(nodeName, DeviceType.COMPUTER, 5, new ArrayList<>());
         }
         else {
-            node = new Nodes(nodeName, DeviceType.REPEATER.name(), 0, new ArrayList<>());
+            node = new Nodes(nodeName, DeviceType.REPEATER, 0, new ArrayList<>());
         }
         nodesList.add(node);
         result="Successfully added "+nodeName+".";
@@ -208,8 +208,8 @@ public class NodesService {
                         path.add(nodeName1);
                         /* DFS to get route path from Source to Destination */
                         dfs(nodeName1,nodeName2,visited,path,messageStrength);
+            StringBuilder finalPath=new StringBuilder();
 
-                        StringBuilder finalPath=new StringBuilder();
 
                         if(path.size()==1)
                             return "Error: Route not found!";

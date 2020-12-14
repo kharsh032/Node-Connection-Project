@@ -13,11 +13,11 @@ public class Nodes {
     @Id
     private String name;
     @Enumerated(EnumType.STRING)
-    private String type;
+    private DeviceType type;
     private int deviceStrength;
     private List<String> nodeConnection;
 
-    public Nodes(String name, String type, int deviceStrength, List<String> nodeConnection) {
+    public Nodes(String name, DeviceType type, int deviceStrength, List<String> nodeConnection) {
         this.name = name;
         this.type = type;
         this.deviceStrength = deviceStrength;
@@ -44,11 +44,11 @@ public class Nodes {
         this.name = name;
     }
 
-    public String getType() {
+    public DeviceType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(DeviceType type) {
         this.type = type;
     }
 
